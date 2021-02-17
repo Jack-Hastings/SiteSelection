@@ -12,10 +12,18 @@
 
 library(tidyverse)
 
+
 ########
 #Import
 #######
 
 spp_codes <- readr::read_csv('data_files/BEF_sppCodes.csv')
-inventory <- readr::read_csv('data_files/BEF_Inventory_Overstory_2001-03.csv')
+BEF_inventory <- readr::read_csv('data_files/BEF_Inventory_Overstory_2001-03.csv')
 
+#merge
+inventory_merge <- BEF_inventory %>%
+  dplyr::left_join(spp_codes, by = c('Spp', 'Spp_Old'))
+
+#paired down -- inventory. Revisit as needed
+inven <- inventory_merge %>%
+  dplyr::select(c('Plot_Number', 'DBH_Class', 'Plot_Area'))
