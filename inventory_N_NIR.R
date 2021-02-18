@@ -26,4 +26,5 @@ inventory_merge <- BEF_inventory %>%
 
 #paired down -- inventory. Revisit as needed
 inven <- inventory_merge %>%
-  dplyr::select(c('Plot_Number', 'DBH_Class', 'Plot_Area'))
+  dplyr::select(c('Plot_Number','Common_Name', 'DBH_Class', 'Plot_Area'))
+
